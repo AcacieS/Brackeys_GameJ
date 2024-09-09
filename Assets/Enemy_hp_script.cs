@@ -6,6 +6,7 @@ public class Enemy_hp_script : MonoBehaviour
 {
     
     public int maxHealth = 4;
+    public Animator anim;
     int currentHealth;
     // Start is called before the first frame update
     void Start()
@@ -15,15 +16,16 @@ public class Enemy_hp_script : MonoBehaviour
     }
 
    public void TakeDamage(int damage){
-    currentHealth -= damage;
-    //hurt animation
-    if(currentHealth <= 0 ){
-        Die();
-    }
+        currentHealth -= damage;
+        anim.SetTrigger("isHurt");
+        //hurt animation
+        if(currentHealth == 0 ){
+            Die();
+        }
    }
    void Die(){
     Debug.Log("tree dead");
-    //Die animation;
-    //Disable the enemy
+    anim.SetBool("isDead", true);
+    this.enabled = false;
    }
 }
