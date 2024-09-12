@@ -21,9 +21,6 @@ public class attackRange_script : MonoBehaviour
                 nextAttackTime = Time.time + 1f / attackRate;
                 Attack();
             }
-        
-
-
     }
     void Attack()
     {

@@ -16,7 +16,7 @@ public class enemyDay2_script : MonoBehaviour
     private Animator anim;
     private bool changeDir = true;
     private Vector2 movement;
-
+    
     // Start is called before the first frame update
     void Start()
     {

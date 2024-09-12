@@ -30,7 +30,6 @@ public class playerController : MonoBehaviour
         anim.SetFloat("Speed", movement.sqrMagnitude);
         //spriteRenderer.flipX = movement.x< 0.01 ? true: false;
 
-        Debug.Log(horizontalInput+"input:"+verticalInput);
         if (horizontalInput > 0.01f)
             {
                 transform.localScale = new Vector3(1, 1, 1);
@@ -39,15 +38,20 @@ public class playerController : MonoBehaviour
             {
                 transform.localScale = new Vector3(-1, 1, 1);
             }
-            
-        if(!(horizontalInput == 0 && verticalInput == 0)){
+         if(!(horizontalInput == 0 && verticalInput == 0)){
             anim.SetFloat("LastMovex", horizontalInput);
             anim.SetFloat("LastMovey", verticalInput);
             attackPoint.transform.position = new Vector3(transform.position.x+horizontalInput, transform.position.y+verticalInput, 0);
         }
-
         
     }
+    public float getHorizontal(){
+        return horizontalInput;
+    }
+    public float getVertical(){
+        return verticalInput;
+    }
+
     void FixedUpdate(){
         rb.MovePosition(rb.position + movement.normalized * moveSpeed * Time.fixedDeltaTime);
     }
