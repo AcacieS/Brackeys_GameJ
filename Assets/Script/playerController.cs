@@ -1,27 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
-using JetBrains.Annotations;
+
 using UnityEngine;
 
 public class playerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 10;
     [SerializeField] private bool isMoving;
-    public Animator anim;
+    private Animator anim;
     public GameObject attackPoint;
     float horizontalInput, verticalInput;
-    Rigidbody2D rb;
-    Vector2 movement;
+    private Rigidbody2D rb;
+    private Vector2 movement;
+    private Vector3 lScale;
+    
 
     void Start(){
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        lScale = transform.localScale;
+        
     }
 
     
     private void Update(){
         horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput =Input.GetAxisRaw("Vertical");
+        verticalInput = Input.GetAxisRaw("Vertical");
         movement.x = horizontalInput;
         movement.y = verticalInput;
 
@@ -32,11 +34,11 @@ public class playerController : MonoBehaviour
 
         if (horizontalInput > 0.01f)
             {
-                transform.localScale = new Vector3(1, 1, 1);
+                transform.localScale = new Vector3(lScale.x, lScale.y, lScale.z);
             }
             else if (horizontalInput < -0.01f)
             {
-                transform.localScale = new Vector3(-1, 1, 1);
+                transform.localScale = new Vector3(-lScale.x, lScale.y, lScale.z);
             }
          if(!(horizontalInput == 0 && verticalInput == 0)){
             anim.SetFloat("LastMovex", horizontalInput);
@@ -55,5 +57,11 @@ public class playerController : MonoBehaviour
     void FixedUpdate(){
         rb.MovePosition(rb.position + movement.normalized * moveSpeed * Time.fixedDeltaTime);
     }
+    void OnTriggerEnter2D(Collider2D col){
+        /*if(col.gameObject.tag=="tree"&&""){
+
+        }*/
+    }
+    
     
 }

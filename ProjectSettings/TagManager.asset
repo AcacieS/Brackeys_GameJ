@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - time
+  - head_shadow
+  - countTree
+  - spawnBossArea
+  - closedDoor
+  - tree
+  - tutoText
+  - tree_boss
   layers:
   - Default
   - TransparentFX
@@ -41,6 +49,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: 1
+  - name: normal
     uniqueID: 1283971785
+    locked: 0
+  - name: foreGround
+    uniqueID: 946491315
+    locked: 0
+  - name: night
+    uniqueID: 4153185497
     locked: 0
